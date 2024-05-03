@@ -1,0 +1,6 @@
+function buyTokens() {
+    // This function would handle the process of buying $ZKIDZ tokens
+    // You can add your logic here to interact with the back-end server
+    // For example, sending a request to an API endpoint to process the purchase
+    alert("Buying $ZKIDZ tokens...");
+}
