@@ -1,6 +1,35 @@
-function buyTokens() {
-    // This function would handle the process of buying $ZKIDZ tokens
-    // You can add your logic here to interact with the back-end server
-    // For example, sending a request to an API endpoint to process the purchase
-    alert("Buying $ZKIDZ tokens...");
+// Create array of image paths
+const imagePaths = ['path_to_image1.jpg', 'path_to_image2.jpg', 'path_to_image3.jpg'];
+
+// Function to create random images in the scene
+function createRandomImages() {
+    const loader = new THREE.TextureLoader();
+
+    // Create multiple images at random positions and rotations
+    for (let i = 0; i < 10; i++) {
+        const randomImagePath = imagePaths[Math.floor(Math.random() * imagePaths.length)];
+        const randomTexture = loader.load(randomImagePath);
+
+        const randomSize = Math.random() * 2 + 1; // Random size between 1 and 3
+        const geometry = new THREE.PlaneGeometry(randomSize, randomSize);
+        const material = new THREE.MeshBasicMaterial({ map: randomTexture, transparent: true });
+        const imageMesh = new THREE.Mesh(geometry, material);
+
+        imageMesh.position.set(
+            Math.random() * 20 - 10, // Random X position between -10 and 10
+            Math.random() * 10 - 5, // Random Y position between -5 and 5
+            Math.random() * -5 // Random Z position between -5 and 0 (to appear behind the cube)
+        );
+
+        imageMesh.rotation.set(
+            Math.random() * Math.PI * 2, // Random rotation around X axis
+            Math.random() * Math.PI * 2, // Random rotation around Y axis
+            Math.random() * Math.PI * 2 // Random rotation around Z axis
+        );
+
+        scene.add(imageMesh);
+    }
 }
+
+// Call the function to create random images
+createRandomImages();
